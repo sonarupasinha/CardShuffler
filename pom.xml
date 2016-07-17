@@ -12,8 +12,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-		<version.jdk>1.7</version.jdk>  <!-- 1.7 for JDK 7 -->
+		<endorsed.dir>${project.build.directory}/</endorsed.dir>
+		<version.jdk>1.7</version.jdk>  
 		<version.mvn.compiler>3.2</version.mvn.compiler>
 		<version.mvn.war.plugin>2.6</version.mvn.war.plugin>
 		<version.jersey>2.15</version.jersey>
