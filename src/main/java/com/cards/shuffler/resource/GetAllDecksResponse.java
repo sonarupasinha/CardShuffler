@@ -8,7 +8,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import com.cards.shuffler.card.GenericDeckI;
 
-public class GetAllDecksResponse implements Serializable  {
+public class GetAllDecksResponse extends BaseResponse implements Serializable  {
 
 	/**
 	 * 
@@ -18,6 +18,8 @@ public class GetAllDecksResponse implements Serializable  {
 	@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 	private List<GenericDeckI> decks;
 
+	public GetAllDecksResponse(){
+	}
 	public GetAllDecksResponse(List<GenericDeckI> decks){
 		this.decks = decks;
 	}

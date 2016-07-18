@@ -61,5 +61,5 @@ public interface CardShufflerServiceI {
 	 * 
 	 * @return A collection of decks currently available
 	 */
-	List<GenericDeckI> getAllDecks();
+	List<GenericDeckI> getAllDecks() throws AppException;
 }

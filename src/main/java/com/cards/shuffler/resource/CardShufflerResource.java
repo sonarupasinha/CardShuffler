@@ -120,8 +120,20 @@ public class CardShufflerResource implements CardShufflerResourceI {
 	 */
 	@Override
 	public GetAllDecksResponse getAllDecks() {
-		List<GenericDeckI> decks = cardShufflerService.getAllDecks();
-		GetAllDecksResponse cardShufflerResponse = new GetAllDecksResponse(decks);
+		GetAllDecksResponse cardShufflerResponse = new GetAllDecksResponse();
+		Integer responseCode = 0;
+		List<GenericDeckI> decks;
+		try {
+			decks = cardShufflerService.getAllDecks();
+			responseCode =0;
+			cardShufflerResponse.setResponseMsg("Success");
+			cardShufflerResponse.setDecks(decks);
+		} catch (AppException e) {
+			responseCode = e.getErrorCode();
+			cardShufflerResponse.setResponseMsg(e.getErrorMessage());	
+		}
+		cardShufflerResponse.setResponseCode(responseCode);
+
 		return cardShufflerResponse;
 	}
 }

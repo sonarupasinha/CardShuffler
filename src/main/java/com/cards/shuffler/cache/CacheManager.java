@@ -119,7 +119,6 @@ public class CacheManager {
 			}
 		}
 		if (null == deck) {
-			// TODO : throw exception
 			System.out.println(deckName + " not found in cache");
 			throw new AppException(CacheErrorKeys.CACHE_ERROR_FETCHING_KEYS.getErrorCode(),
 					errMsgsProperties.getProperty(CacheErrorKeys.CACHE_ERROR_FETCHING_KEYS.getErrorKey()));
@@ -132,8 +131,9 @@ public class CacheManager {
 	 * This method looks up the cache for all the stored decks
 	 * 
 	 * @return A collection of Shuffler type for all the decks in the cache
+	 * @throws AppException 
 	 */
-	public List<GenericDeckI> lookupCache() {
+	public List<GenericDeckI> lookupCache() throws AppException {
 		Iterator<Entry<String, GenericDeckI>> cacheMapIterator = null;
 		List<GenericDeckI> deckList = new ArrayList<>();
 		cacheMapIterator = cacheMap.entrySet().iterator();
@@ -144,6 +144,9 @@ public class CacheManager {
 		}
 		if (deckList.isEmpty()) {
 			System.out.println("Cache is Empty");
+			throw new AppException(CacheErrorKeys.CACHE_EMPTY.getErrorCode(),
+					errMsgsProperties.getProperty(CacheErrorKeys.CACHE_EMPTY.getErrorKey()));
+
 		}
 		return deckList;
 	}

@@ -15,8 +15,7 @@ import com.cards.shuffler.card.GenericDeckI;
  */
 public class CardShufflerResourceTest {
 
-	@Inject
-	CardShufflerResourceI cardShufflerResource;
+	CardShufflerResourceI cardShufflerResource = new CardShufflerResource() ;
 
 	/**
 	 * Prints all cards
@@ -31,6 +30,77 @@ public class CardShufflerResourceTest {
 		}
 	}
 
+	/**
+	 * Tests createDeck() with deck name
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testCreateDeckWithDeckName() throws Exception {
+		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		cardShufflerResponse = cardShufflerResource.createDeck("test1");
+		Assert.assertEquals(0, cardShufflerResponse.getResponseCode());
+	}
+
+	/**
+	 * Tests createDeck() with no deck name
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testCreateDeckNoInput() throws Exception {
+		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		cardShufflerResponse = cardShufflerResource.createDeck(null);
+		Assert.assertNotSame(0, cardShufflerResponse.getResponseCode());
+	}
+
+	/**
+	 * Tests createDeck() with deck name and an existing shuffled deck
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testCreateDeckExistingShuffledDeckInput() throws Exception {
+		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		cardShufflerResponse = cardShufflerResource.createDeck("test1");
+		Assert.assertEquals(0, cardShufflerResponse.getResponseCode());
+	}
+	
+	/**
+	 * Tests createDeck() with deck name
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testShuffleDeckWithDeckName() throws Exception {
+		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		cardShufflerResponse = cardShufflerResource.shuffleDeck("test1");
+		Assert.assertEquals(0, cardShufflerResponse.getResponseCode());
+	}
+
+	/**
+	 * Tests createDeck() with no deck name
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testShuffleDeckNoInput() throws Exception {
+		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		cardShufflerResponse = cardShufflerResource.shuffleDeck(null);
+		Assert.assertNotSame(0, cardShufflerResponse.getResponseCode());
+	}
+
+	/**
+	 * Tests createDeck() with deck name and an existing shuffled deck
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testShuffleDeckExistingShuffledDeckInput() throws Exception {
+		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		cardShufflerResponse = cardShufflerResource.createDeck("test1");
+		Assert.assertEquals(0, cardShufflerResponse.getResponseCode());
+	}
 	/**
 	 * Test getDeck()
 	 * 
@@ -98,9 +168,9 @@ public class CardShufflerResourceTest {
 	 * @throws Exception
 	 */
 	@Test
-	public void testCreateDeckWithDeckName() throws Exception {
-		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
-		cardShufflerResponse = cardShufflerResource.createDeck("test1");
+	public void testDeleteDeckWithDeckName() throws Exception {
+		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		cardShufflerResponse = cardShufflerResource.deleteDeck("test1");
 		Assert.assertEquals(0, cardShufflerResponse.getResponseCode());
 	}
 
@@ -110,21 +180,10 @@ public class CardShufflerResourceTest {
 	 * @throws Exception
 	 */
 	@Test
-	public void testCreateDeckNoInput() throws Exception {
-		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
-		cardShufflerResponse = cardShufflerResource.createDeck(null);
+	public void testDeleteDeckNoInput() throws Exception {
+		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		cardShufflerResponse = cardShufflerResource.deleteDeck(null);
 		Assert.assertNotSame(0, cardShufflerResponse.getResponseCode());
 	}
 
-	/**
-	 * Tests createDeck() with deck name and an existing shuffled deck
-	 * 
-	 * @throws Exception
-	 */
-	@Test
-	public void testCreateDeckExistingShuffledDeckInput() throws Exception {
-		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
-		cardShufflerResponse = cardShufflerResource.createDeck("test1");
-		Assert.assertEquals(0, cardShufflerResponse.getResponseCode());
-	}
 }

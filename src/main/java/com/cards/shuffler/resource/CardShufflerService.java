@@ -121,7 +121,7 @@ public class CardShufflerService implements CardShufflerServiceI {
 	 * @see com.cards.shuffler.resource.CardShufflerServiceI#getAllDecks()
 	 */
 	@Override
-	public List<GenericDeckI> getAllDecks() {
+	public List<GenericDeckI> getAllDecks() throws AppException {
 		List<GenericDeckI> deckList = CacheManager.getInstance().lookupCache();
 		System.out.println("Total decks currently :" + deckList.size());
 		return deckList;
