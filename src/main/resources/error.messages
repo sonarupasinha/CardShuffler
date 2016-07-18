@@ -1,0 +1,2 @@
+input.empty=Please provide a valid/Non empty input. Empty Input cannot be accepted.
+config.property.not.set=Please check the config.properties file for the key {1}.
