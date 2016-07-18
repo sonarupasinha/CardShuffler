@@ -23,17 +23,17 @@ public interface CardShufflerResourceI {
 	 * 
 	 * @param name
 	 *            : Name of the deck to be returned.
-	 * @return CardShufflerResponse
+	 * @return GetDeckResponse
 	 */
 	@GET
 	@Path("deck/{name}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public CardShufflerResponse getDeck(@PathParam("name") String name);
+	public GetDeckResponse getDeck(@PathParam("name") String name);
 
 	/**
 	 * Exposes a GET end-point to return all the valid decks
 	 * 
-	 * @return CardShufflerResponse
+	 * @return GetDeckResponse
 	 */
 	@GET
 	@Path("decks")
@@ -45,7 +45,7 @@ public interface CardShufflerResourceI {
 	 * 
 	 * @param name
 	 *            : Name of the deck to be created
-	 * @return CardShufflerResponse
+	 * @return GetDeckResponse
 	 */
 	@PUT
 	@Path("deck")
@@ -58,7 +58,7 @@ public interface CardShufflerResourceI {
 	 * 
 	 * @param name
 	 *            : Name of the deck to be shuffled
-	 * @return CardShufflerResponse
+	 * @return GetDeckResponse
 	 */
 	@POST
 	@Path("deck/shuffle")
@@ -71,7 +71,7 @@ public interface CardShufflerResourceI {
 	 * 
 	 * @param name
 	 *            : Name of the deck to be deleted
-	 * @return CardShufflerResponse
+	 * @return GetDeckResponse
 	 */
 	@DELETE
 	@Path("deck/{name}")

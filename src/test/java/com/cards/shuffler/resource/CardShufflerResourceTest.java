@@ -37,7 +37,7 @@ public class CardShufflerResourceTest {
 	 */
 	@Test
 	public void testCreateDeckWithDeckName() throws Exception {
-		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		BaseResponse cardShufflerResponse = new GetDeckResponse();
 		cardShufflerResponse = cardShufflerResource.createDeck("test1");
 		Assert.assertEquals(0, cardShufflerResponse.getResponseCode());
 	}
@@ -49,7 +49,7 @@ public class CardShufflerResourceTest {
 	 */
 	@Test
 	public void testCreateDeckNoInput() throws Exception {
-		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		BaseResponse cardShufflerResponse = new GetDeckResponse();
 		cardShufflerResponse = cardShufflerResource.createDeck(null);
 		Assert.assertNotSame(0, cardShufflerResponse.getResponseCode());
 	}
@@ -61,7 +61,7 @@ public class CardShufflerResourceTest {
 	 */
 	@Test
 	public void testCreateDeckExistingShuffledDeckInput() throws Exception {
-		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		BaseResponse cardShufflerResponse = new GetDeckResponse();
 		cardShufflerResponse = cardShufflerResource.createDeck("test1");
 		Assert.assertEquals(0, cardShufflerResponse.getResponseCode());
 	}
@@ -73,7 +73,7 @@ public class CardShufflerResourceTest {
 	 */
 	@Test
 	public void testShuffleDeckWithDeckName() throws Exception {
-		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		BaseResponse cardShufflerResponse = new GetDeckResponse();
 		cardShufflerResponse = cardShufflerResource.shuffleDeck("test1");
 		Assert.assertEquals(0, cardShufflerResponse.getResponseCode());
 	}
@@ -85,7 +85,7 @@ public class CardShufflerResourceTest {
 	 */
 	@Test
 	public void testShuffleDeckNoInput() throws Exception {
-		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		BaseResponse cardShufflerResponse = new GetDeckResponse();
 		cardShufflerResponse = cardShufflerResource.shuffleDeck(null);
 		Assert.assertNotSame(0, cardShufflerResponse.getResponseCode());
 	}
@@ -97,7 +97,7 @@ public class CardShufflerResourceTest {
 	 */
 	@Test
 	public void testShuffleDeckExistingShuffledDeckInput() throws Exception {
-		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		BaseResponse cardShufflerResponse = new GetDeckResponse();
 		cardShufflerResponse = cardShufflerResource.createDeck("test1");
 		Assert.assertEquals(0, cardShufflerResponse.getResponseCode());
 	}
@@ -108,11 +108,11 @@ public class CardShufflerResourceTest {
 	 */
 	@Test
 	public void testGetDeck() throws Exception {
-		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
-		cardShufflerResponse = cardShufflerResource.getDeck("test1");
-		GenericDeckI deck = cardShufflerResponse.getDeck();
+		GetDeckResponse getDeckResponse = new GetDeckResponse();
+		getDeckResponse = cardShufflerResource.getDeck("test1");
+		GenericDeckI deck = getDeckResponse.getDeck();
 		printAllCards(deck);
-		Assert.assertEquals(0, cardShufflerResponse.getResponseCode());
+		Assert.assertEquals(0, getDeckResponse.getResponseCode());
 
 	}
 
@@ -121,9 +121,9 @@ public class CardShufflerResourceTest {
 	 */
 	@Test
 	public void testGetDeckWithNullInput() throws Exception {
-		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
-		cardShufflerResponse = cardShufflerResource.getDeck(null);
-		Assert.assertNotSame(0, cardShufflerResponse.getResponseCode());
+		GetDeckResponse getDeckResponse = new GetDeckResponse();
+		getDeckResponse = cardShufflerResource.getDeck(null);
+		Assert.assertNotSame(0, getDeckResponse.getResponseCode());
 	}
 
 	/**
@@ -133,9 +133,9 @@ public class CardShufflerResourceTest {
 	 */
 	@Test
 	public void testGetDeckWithInvalidInput() throws Exception {
-		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
-		cardShufflerResponse = cardShufflerResource.getDeck("test2");
-		Assert.assertNotSame(0, cardShufflerResponse.getResponseCode());
+		GetDeckResponse getDeckResponse = new GetDeckResponse();
+		getDeckResponse = cardShufflerResource.getDeck("test2");
+		Assert.assertNotSame(0, getDeckResponse.getResponseCode());
 	}
 
 	/**
@@ -145,9 +145,9 @@ public class CardShufflerResourceTest {
 	 */
 	@Test
 	public void testGetDeckWithValidInputSorted() throws Exception {
-		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
-		cardShufflerResponse = cardShufflerResource.getDeck("test1");
-		Assert.assertEquals(0, cardShufflerResponse.getResponseCode());
+		GetDeckResponse getDeckResponse = new GetDeckResponse();
+		getDeckResponse = cardShufflerResource.getDeck("test1");
+		Assert.assertEquals(0, getDeckResponse.getResponseCode());
 	}
 
 	/**
@@ -157,9 +157,9 @@ public class CardShufflerResourceTest {
 	 */
 	@Test
 	public void testGetNameWithValidInputShuffled() throws Exception {
-		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
-		cardShufflerResponse = cardShufflerResource.getDeck("test1");
-		Assert.assertEquals(0, cardShufflerResponse.getResponseCode());
+		GetDeckResponse getDeckResponse = new GetDeckResponse();
+		getDeckResponse = cardShufflerResource.getDeck("test1");
+		Assert.assertEquals(0, getDeckResponse.getResponseCode());
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class CardShufflerResourceTest {
 	 */
 	@Test
 	public void testDeleteDeckWithDeckName() throws Exception {
-		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		BaseResponse cardShufflerResponse = new GetDeckResponse();
 		cardShufflerResponse = cardShufflerResource.deleteDeck("test1");
 		Assert.assertEquals(0, cardShufflerResponse.getResponseCode());
 	}
@@ -181,7 +181,7 @@ public class CardShufflerResourceTest {
 	 */
 	@Test
 	public void testDeleteDeckNoInput() throws Exception {
-		BaseResponse cardShufflerResponse = new CardShufflerResponse();
+		BaseResponse cardShufflerResponse = new GetDeckResponse();
 		cardShufflerResponse = cardShufflerResource.deleteDeck(null);
 		Assert.assertNotSame(0, cardShufflerResponse.getResponseCode());
 	}

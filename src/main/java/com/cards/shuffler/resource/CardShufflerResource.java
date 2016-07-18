@@ -29,21 +29,21 @@ public class CardShufflerResource implements CardShufflerResourceI {
 	 * String)
 	 */
 	@Override
-	public CardShufflerResponse getDeck(String name) {
+	public GetDeckResponse getDeck(String name) {
 		Integer responseCode = 0;
-		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
+		GetDeckResponse getDeckResponse = new GetDeckResponse();
 		GenericDeckI deck;
 		try {
 			deck = cardShufflerService.getDeck(name);
-			cardShufflerResponse.setDeck(deck);
-			cardShufflerResponse.setResponseMsg("Success");
+			getDeckResponse.setDeck(deck);
+			getDeckResponse.setResponseMsg("Success");
 		} catch (AppException e) {
 			responseCode = e.getErrorCode();
-			cardShufflerResponse.setResponseMsg(e.getErrorMessage());
+			getDeckResponse.setResponseMsg(e.getErrorMessage());
 		}
 
-		cardShufflerResponse.setResponseCode(responseCode);
-		return cardShufflerResponse;
+		getDeckResponse.setResponseCode(responseCode);
+		return getDeckResponse;
 	}
 
 	/*
@@ -101,16 +101,16 @@ public class CardShufflerResource implements CardShufflerResourceI {
 	@Override
 	public BaseResponse deleteDeck(String name) {
 		Integer responseCode = 0;
-		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
+		GetDeckResponse getDeckResponse = new GetDeckResponse();
 		try {
 			responseCode = cardShufflerService.deleteDeck(name);
-			cardShufflerResponse.setResponseMsg("Success");
+			getDeckResponse.setResponseMsg("Success");
 		} catch (AppException e) {
 			responseCode = e.getErrorCode();
-			cardShufflerResponse.setResponseMsg(e.getErrorMessage());
+			getDeckResponse.setResponseMsg(e.getErrorMessage());
 		}
-		cardShufflerResponse.setResponseCode(responseCode);
-		return cardShufflerResponse;
+		getDeckResponse.setResponseCode(responseCode);
+		return getDeckResponse;
 	}
 
 	/*
@@ -125,12 +125,12 @@ public class CardShufflerResource implements CardShufflerResourceI {
 		List<GenericDeckI> decks;
 		try {
 			decks = cardShufflerService.getAllDecks();
-			responseCode =0;
+			responseCode = 0;
 			cardShufflerResponse.setResponseMsg("Success");
 			cardShufflerResponse.setDecks(decks);
 		} catch (AppException e) {
 			responseCode = e.getErrorCode();
-			cardShufflerResponse.setResponseMsg(e.getErrorMessage());	
+			cardShufflerResponse.setResponseMsg(e.getErrorMessage());
 		}
 		cardShufflerResponse.setResponseCode(responseCode);
 

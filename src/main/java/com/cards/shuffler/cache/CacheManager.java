@@ -131,7 +131,7 @@ public class CacheManager {
 	 * This method looks up the cache for all the stored decks
 	 * 
 	 * @return A collection of Shuffler type for all the decks in the cache
-	 * @throws AppException 
+	 * @throws AppException
 	 */
 	public List<GenericDeckI> lookupCache() throws AppException {
 		Iterator<Entry<String, GenericDeckI>> cacheMapIterator = null;
@@ -140,7 +140,12 @@ public class CacheManager {
 
 		System.out.println("Currently valid Cachesize :" + cacheMap.keySet().size());
 		while (cacheMapIterator.hasNext()) {
-			deckList.add(cacheMap.get(cacheMapIterator.next()));
+			String deckName = cacheMapIterator.next().getKey();
+			GenericDeckI deck = cacheMap.get(deckName);
+			// TODO - May need to review this piece
+			if (!deckList.contains(deck)) {
+				deckList.add(deck);
+			}
 		}
 		if (deckList.isEmpty()) {
 			System.out.println("Cache is Empty");

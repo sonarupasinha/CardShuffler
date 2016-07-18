@@ -2,6 +2,8 @@ package com.cards.shuffler.card;
 
 import com.cards.shuffler.enums.EnumValues.FaceValue;
 import com.cards.shuffler.enums.EnumValues.Suit;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * Handles deck of poker cards
@@ -11,8 +13,11 @@ import com.cards.shuffler.enums.EnumValues.Suit;
  */
 public class DeckOfPokerCards implements GenericDeckI {
 
+	@JsonSerialize
 	String pokerDeckName;
+	@JsonSerialize
 	PokerCard[] pokerDeck;
+	@JsonIgnore
 	final int cardCountInDeck = 52;
 
 	/*

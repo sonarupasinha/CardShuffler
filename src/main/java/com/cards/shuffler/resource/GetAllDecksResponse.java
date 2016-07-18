@@ -8,36 +8,37 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import com.cards.shuffler.card.GenericDeckI;
 
-public class GetAllDecksResponse extends BaseResponse implements Serializable  {
-
-	/**
-	 * 
-	 */
+/**
+ * Response handler for all the decks
+ * 
+ * @author Sona
+ *
+ */
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_EMPTY)
+public class GetAllDecksResponse extends BaseResponse implements Serializable {
 	private static final long serialVersionUID = 1L;
+
+	// List of decks
 	@JsonProperty
 	@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 	private List<GenericDeckI> decks;
 
-	public GetAllDecksResponse(){
+	/**
+	 * Gets the list of decks
+	 * 
+	 * @return Collection of decks
+	 */
+	public List<GenericDeckI> getDecks() {
+		return decks;
 	}
-	public GetAllDecksResponse(List<GenericDeckI> decks){
+
+	/**
+	 * Sets the decks
+	 * 
+	 * @param decks
+	 *            Decks to be set in the collection
+	 */
+	public void setDecks(List<GenericDeckI> decks) {
 		this.decks = decks;
 	}
-	/**
-		 * 
-		 * @return
-		 */
-		public List<GenericDeckI> getDecks() {
-			return decks;
-		}
-	
-		/**
-		 * 
-		 * @param shufflers
-		 */
-		public void setDecks(List<GenericDeckI> decks) {
-			this.decks = decks;
-		}
-
-	
 }
