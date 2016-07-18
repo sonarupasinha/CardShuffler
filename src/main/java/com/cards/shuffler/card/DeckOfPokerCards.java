@@ -13,10 +13,10 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  */
 public class DeckOfPokerCards implements GenericDeckI {
 
-	@JsonSerialize
-	String pokerDeckName;
-	@JsonSerialize
-	PokerCard[] pokerDeck;
+	private String pokerDeckName;
+	
+	private PokerCard[] pokerDeck;
+	
 	@JsonIgnore
 	final int cardCountInDeck = 52;
 

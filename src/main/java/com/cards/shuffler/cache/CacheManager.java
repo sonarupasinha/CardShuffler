@@ -142,10 +142,7 @@ public class CacheManager {
 		while (cacheMapIterator.hasNext()) {
 			String deckName = cacheMapIterator.next().getKey();
 			GenericDeckI deck = cacheMap.get(deckName);
-			// TODO - May need to review this piece
-			if (!deckList.contains(deck)) {
-				deckList.add(deck);
-			}
+			deckList.add(deck);
 		}
 		if (deckList.isEmpty()) {
 			System.out.println("Cache is Empty");
