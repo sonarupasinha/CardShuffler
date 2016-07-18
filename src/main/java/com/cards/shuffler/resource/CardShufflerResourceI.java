@@ -38,7 +38,7 @@ public interface CardShufflerResourceI {
 	@GET
 	@Path("decks")
 	@Produces(MediaType.APPLICATION_JSON)
-	public CardShufflerResponse getAllDecks();
+	public GetAllDecksResponse getAllDecks();
 
 	/**
 	 * Exposes a PUT end-point to create/update the given named deck
@@ -51,7 +51,7 @@ public interface CardShufflerResourceI {
 	@Path("deck")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
-	public CardShufflerResponse createDeck(@FormParam("name") String name);
+	public BaseResponse createDeck(@FormParam("name") String name);
 
 	/**
 	 * Exposes a POST end-point to shuffle the given named deck
@@ -64,7 +64,7 @@ public interface CardShufflerResourceI {
 	@Path("deck/shuffle")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
-	public CardShufflerResponse shuffleDeck(@FormParam("name") String name);
+	public BaseResponse shuffleDeck(@FormParam("name") String name);
 
 	/**
 	 * Exposes a DELETE end-point to delete the given named deck
@@ -76,5 +76,5 @@ public interface CardShufflerResourceI {
 	@DELETE
 	@Path("deck/{name}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public CardShufflerResponse deleteDeck(@PathParam("name") String name);
+	public BaseResponse deleteDeck(@PathParam("name") String name);
 }

@@ -54,10 +54,10 @@ public class CardShufflerResource implements CardShufflerResourceI {
 	 * String)
 	 */
 	@Override
-	public CardShufflerResponse createDeck(String name) {
+	public BaseResponse createDeck(String name) {
 
 		Integer responseCode = 0;
-		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
+		BaseResponse cardShufflerResponse = new BaseResponse();
 		try {
 			responseCode = cardShufflerService.createDeck(name);
 			cardShufflerResponse.setResponseMsg("Success");
@@ -77,9 +77,9 @@ public class CardShufflerResource implements CardShufflerResourceI {
 	 * String)
 	 */
 	@Override
-	public CardShufflerResponse shuffleDeck(String name) {
+	public BaseResponse shuffleDeck(String name) {
 		Integer responseCode = 0;
-		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
+		BaseResponse cardShufflerResponse = new BaseResponse();
 		try {
 			responseCode = cardShufflerService.shuffleDeck(name);
 			cardShufflerResponse.setResponseMsg("Success");
@@ -99,7 +99,7 @@ public class CardShufflerResource implements CardShufflerResourceI {
 	 * String)
 	 */
 	@Override
-	public CardShufflerResponse deleteDeck(String name) {
+	public BaseResponse deleteDeck(String name) {
 		Integer responseCode = 0;
 		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
 		try {
@@ -119,10 +119,9 @@ public class CardShufflerResource implements CardShufflerResourceI {
 	 * @see com.cards.shuffler.resource.CardShufflerResourceI#getAllDecks()
 	 */
 	@Override
-	public CardShufflerResponse getAllDecks() {
-		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
+	public GetAllDecksResponse getAllDecks() {
 		List<GenericDeckI> decks = cardShufflerService.getAllDecks();
-		cardShufflerResponse.setDecks(decks);
+		GetAllDecksResponse cardShufflerResponse = new GetAllDecksResponse(decks);
 		return cardShufflerResponse;
 	}
 }
