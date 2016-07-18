@@ -26,7 +26,7 @@ public class CardShufflerResourceTest {
 	public void printAllCards(GenericDeckI shuffler) {
 		System.out.println("Contents of deck");
 		for (int i = 0; i < shuffler.getDeck().length; i++) {
-			System.out.println(shuffler.getDeck().toString());
+			System.out.println(shuffler.getDeck()[i].toString());
 		}
 	}
 
@@ -122,7 +122,7 @@ public class CardShufflerResourceTest {
 	@Test
 	public void testGetDeckWithNullInput() throws Exception {
 		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
-		cardShufflerResponse = cardShufflerResource.getDeck("test1");
+		cardShufflerResponse = cardShufflerResource.getDeck(null);
 		Assert.assertNotSame(0, cardShufflerResponse.getResponseCode());
 	}
 
@@ -134,7 +134,7 @@ public class CardShufflerResourceTest {
 	@Test
 	public void testGetDeckWithInvalidInput() throws Exception {
 		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
-		cardShufflerResponse = cardShufflerResource.getDeck("test1");
+		cardShufflerResponse = cardShufflerResource.getDeck("test2");
 		Assert.assertNotSame(0, cardShufflerResponse.getResponseCode());
 	}
 

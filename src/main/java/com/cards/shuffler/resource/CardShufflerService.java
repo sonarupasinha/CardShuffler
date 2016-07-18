@@ -108,9 +108,6 @@ public class CardShufflerService implements CardShufflerServiceI {
 			throw new AppException(ValidationKeys.WEBSERVICE_INPUT_EMPTY.getErrorCode(),
 					errMsgsProperties.getProperty(ValidationKeys.WEBSERVICE_INPUT_EMPTY.getErrorKey()));
 		}
-		GenericDeckI pokerDeck = CacheManager.getInstance().lookupCache(name);
-		System.out.println("pokerDeckreturn size " + pokerDeck.getDeck().length);
-		pokerDeck.getDeck();
 		CacheManager.getInstance().removeFromCache(name);
 		return 0;
 	}

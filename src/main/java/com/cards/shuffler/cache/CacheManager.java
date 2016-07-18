@@ -90,8 +90,8 @@ public class CacheManager {
 		}
 		if (deleteFlag == false) {
 			System.out.println(deckName + " not found in cache");
-			throw new AppException(CacheErrorKeys.CACHE_ERROR_REMOVING_KEYS.getErrorCode(),
-					errMsgsProperties.getProperty(CacheErrorKeys.CACHE_ERROR_REMOVING_KEYS.getErrorKey()));
+			throw new AppException(CacheErrorKeys.CACHE_KEY_NOT_PRESENT.getErrorCode(),
+					errMsgsProperties.getProperty(CacheErrorKeys.CACHE_KEY_NOT_PRESENT.getErrorKey()));
 
 		}
 
@@ -120,8 +120,8 @@ public class CacheManager {
 		}
 		if (null == deck) {
 			System.out.println(deckName + " not found in cache");
-			throw new AppException(CacheErrorKeys.CACHE_ERROR_FETCHING_KEYS.getErrorCode(),
-					errMsgsProperties.getProperty(CacheErrorKeys.CACHE_ERROR_FETCHING_KEYS.getErrorKey()));
+			throw new AppException(CacheErrorKeys.CACHE_KEY_NOT_PRESENT.getErrorCode(),
+					errMsgsProperties.getProperty(CacheErrorKeys.CACHE_KEY_NOT_PRESENT.getErrorKey()));
 
 		}
 		return deck;
