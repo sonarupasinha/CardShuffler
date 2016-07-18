@@ -101,7 +101,7 @@ public class CardShufflerResource implements CardShufflerResourceI {
 	@Override
 	public BaseResponse deleteDeck(String name) {
 		Integer responseCode = 0;
-		GetDeckResponse getDeckResponse = new GetDeckResponse();
+		BaseResponse getDeckResponse = new BaseResponse();
 		try {
 			responseCode = cardShufflerService.deleteDeck(name);
 			getDeckResponse.setResponseMsg("Success");
