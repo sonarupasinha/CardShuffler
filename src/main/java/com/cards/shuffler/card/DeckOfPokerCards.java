@@ -20,6 +20,7 @@ public class DeckOfPokerCards implements GenericDeckI {
 	 * 
 	 * @see cardDeck.GenericDeck#setDeckName(java.lang.String)
 	 */
+	@Override
 	public void setDeckName(String deckName) {
 		this.pokerDeckName = deckName;
 	}
@@ -29,6 +30,7 @@ public class DeckOfPokerCards implements GenericDeckI {
 	 * 
 	 * @see cardDeck.GenericDeck#setupNewDeck()
 	 */
+	@Override
 	public void setupNewDeck() {
 		System.out.println("setupNewDeck() of  DeckOfPokerCards called");
 		int cardCounter = 0;
@@ -45,6 +47,7 @@ public class DeckOfPokerCards implements GenericDeckI {
 	 * 
 	 * @see cardDeck.GenericDeck#getDeckName()
 	 */
+	@Override
 	public String getDeckName() {
 		return this.pokerDeckName;
 	}
@@ -54,6 +57,7 @@ public class DeckOfPokerCards implements GenericDeckI {
 	 * 
 	 * @see cardDeck.GenericDeck#getDeck()
 	 */
+	@Override
 	public GenericCardI[] getDeck() {
 		return this.pokerDeck;
 	}
@@ -63,6 +67,7 @@ public class DeckOfPokerCards implements GenericDeckI {
 	 * 
 	 * @see cardDeck.GenericDeck#setDeck(cardDeck.Card[])
 	 */
+	@Override
 	public void setDeck(GenericCardI[] deck) {
 		this.pokerDeck = (PokerCard[]) deck;
 	}
@@ -72,6 +77,7 @@ public class DeckOfPokerCards implements GenericDeckI {
 	 * 
 	 * @see cardDeck.GenericDeck#setupNewDeck(java.lang.String)
 	 */
+	@Override
 	public void setupNewDeck(String deckName) {
 		this.pokerDeckName = deckName;
 		this.setupNewDeck();
@@ -82,8 +88,8 @@ public class DeckOfPokerCards implements GenericDeckI {
 	 * 
 	 * @see cardDeck.GenericDeck#getCardCountInDeck()
 	 */
+	@Override
 	public int getCardCountInDeck() {
 		return this.cardCountInDeck;
 	}
-
 }

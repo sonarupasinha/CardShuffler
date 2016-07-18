@@ -5,7 +5,7 @@ import java.util.Properties;
 
 import javax.ws.rs.Path;
 
-import com.cards.shuffler.card.Deck;
+import com.cards.shuffler.card.GenericDeckI;
 import com.cards.shuffler.exceptions.AppException;
 import com.cards.shuffler.main.server.LoadProperties;
 
@@ -32,7 +32,7 @@ public class CardShufflerResource implements CardShufflerResourceI {
 	public CardShufflerResponse getDeck(String name) {
 		Integer responseCode = 0;
 		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
-		Deck deck;
+		GenericDeckI deck;
 		try {
 			deck = cardShufflerService.getDeck(name);
 			cardShufflerResponse.setDeck(deck);
@@ -121,7 +121,7 @@ public class CardShufflerResource implements CardShufflerResourceI {
 	@Override
 	public CardShufflerResponse getAllDecks() {
 		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
-		List<Deck> decks = cardShufflerService.getAllDecks();
+		List<GenericDeckI> decks = cardShufflerService.getAllDecks();
 		cardShufflerResponse.setDecks(decks);
 		return cardShufflerResponse;
 	}

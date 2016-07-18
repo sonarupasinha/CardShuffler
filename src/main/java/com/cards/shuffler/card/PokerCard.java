@@ -40,6 +40,7 @@ public class PokerCard implements GenericCardI {
 	 * 
 	 * @see com.cards.shuffler.card.GenericCardI#getSuit()
 	 */
+	@Override
 	public Suit getSuit() {
 		return suit;
 	}
@@ -49,6 +50,7 @@ public class PokerCard implements GenericCardI {
 	 * 
 	 * @see com.cards.shuffler.card.GenericCardI#getFaceValue()
 	 */
+	@Override
 	public FaceValue getFaceValue() {
 		return faceValue;
 	}

@@ -2,7 +2,7 @@ package com.cards.shuffler.resource;
 
 import java.util.List;
 
-import com.cards.shuffler.card.Deck;
+import com.cards.shuffler.card.GenericDeckI;
 import com.cards.shuffler.exceptions.AppException;
 
 /**
@@ -21,7 +21,7 @@ public interface CardShufflerServiceI {
 	 * @return Return the deck by the given name
 	 * @throws AppException
 	 */
-	Deck getDeck(String name) throws AppException;
+	GenericDeckI getDeck(String name) throws AppException;
 
 	/**
 	 * Create the given named deck
@@ -61,5 +61,5 @@ public interface CardShufflerServiceI {
 	 * 
 	 * @return A collection of decks currently available
 	 */
-	List<Deck> getAllDecks();
+	List<GenericDeckI> getAllDecks();
 }

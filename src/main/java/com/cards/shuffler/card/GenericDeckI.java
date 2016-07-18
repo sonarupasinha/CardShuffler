@@ -41,7 +41,7 @@ public interface GenericDeckI {
 	/**
 	 * Gets the current deck of cards
 	 * 
-	 * @return Deck of cards
+	 * @return Shuffler of cards
 	 */
 	public GenericCardI[] getDeck();
 

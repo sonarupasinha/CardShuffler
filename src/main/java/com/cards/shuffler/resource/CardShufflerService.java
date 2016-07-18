@@ -6,8 +6,9 @@ import java.util.Properties;
 import org.apache.commons.lang3.StringUtils;
 
 import com.cards.shuffler.cache.CacheManager;
-import com.cards.shuffler.card.Deck;
 import com.cards.shuffler.card.DeckOfPokerCards;
+import com.cards.shuffler.card.GenericDeckI;
+import com.cards.shuffler.card.Shuffler;
 import com.cards.shuffler.enums.ErrorKeys.ValidationKeys;
 import com.cards.shuffler.exceptions.AppException;
 import com.cards.shuffler.main.server.LoadProperties;
@@ -31,13 +32,13 @@ public class CardShufflerService implements CardShufflerServiceI {
 	 * String)
 	 */
 	@Override
-	public Deck getDeck(String name) throws AppException {
+	public GenericDeckI getDeck(String name) throws AppException {
 		if (null == name) {
 			throw new AppException(ValidationKeys.WEBSERVICE_INPUT_EMPTY.getErrorCode(),
 					errMsgsProperties.getProperty(ValidationKeys.WEBSERVICE_INPUT_EMPTY.getErrorKey()));
 		}
 		System.out.println("Input name : " + name);
-		Deck pokerDeck = CacheManager.getInstance().lookupCache(name);
+		GenericDeckI pokerDeck = CacheManager.getInstance().lookupCache(name);
 		// pokerDeck.printAllCards();
 		return pokerDeck;
 	}
@@ -55,8 +56,7 @@ public class CardShufflerService implements CardShufflerServiceI {
 			throw new AppException(ValidationKeys.WEBSERVICE_INPUT_EMPTY.getErrorCode(),
 					errMsgsProperties.getProperty(ValidationKeys.WEBSERVICE_INPUT_EMPTY.getErrorKey()));
 		}
-		Deck pokerDeck = new Deck();
-		pokerDeck.setDeckType(new DeckOfPokerCards());
+		GenericDeckI pokerDeck = new DeckOfPokerCards();
 		pokerDeck.setupNewDeck(name);
 		// pokerDeck.printAllCards();
 		CacheManager.getInstance().addToCache(name, pokerDeck);
@@ -76,15 +76,16 @@ public class CardShufflerService implements CardShufflerServiceI {
 			throw new AppException(ValidationKeys.WEBSERVICE_INPUT_EMPTY.getErrorCode(),
 					errMsgsProperties.getProperty(ValidationKeys.WEBSERVICE_INPUT_EMPTY.getErrorKey()));
 		}
-		Deck pokerDeck = CacheManager.getInstance().lookupCache(name);
+		GenericDeckI pokerDeck = CacheManager.getInstance().lookupCache(name);
 		System.out.println("pokerDeckreturn size " + pokerDeck.getDeck().length);
 		pokerDeck.getDeck();
+		Shuffler shuffler = new Shuffler();
 		String shuffleLogic = properties.getProperty("SHUFFLE_LOGIC");
 		System.out.println("shuffleLogic" + shuffleLogic);
 		if (StringUtils.equals("simple", shuffleLogic))
-			pokerDeck.simpleShuffleCards();
+			pokerDeck = shuffler.simpleShuffleCards(pokerDeck);
 		else if (StringUtils.equals("complex", shuffleLogic))
-			pokerDeck.handShuffleCards();
+			pokerDeck = shuffler.handShuffleCards(pokerDeck);
 		else
 			throw new AppException(ValidationKeys.PROPERTY_NOT_SET.getErrorCode(),
 					errMsgsProperties.getProperty(ValidationKeys.PROPERTY_NOT_SET.getErrorKey()),
@@ -107,7 +108,7 @@ public class CardShufflerService implements CardShufflerServiceI {
 			throw new AppException(ValidationKeys.WEBSERVICE_INPUT_EMPTY.getErrorCode(),
 					errMsgsProperties.getProperty(ValidationKeys.WEBSERVICE_INPUT_EMPTY.getErrorKey()));
 		}
-		Deck pokerDeck = CacheManager.getInstance().lookupCache(name);
+		GenericDeckI pokerDeck = CacheManager.getInstance().lookupCache(name);
 		System.out.println("pokerDeckreturn size " + pokerDeck.getDeck().length);
 		pokerDeck.getDeck();
 		CacheManager.getInstance().removeFromCache(name);
@@ -120,8 +121,8 @@ public class CardShufflerService implements CardShufflerServiceI {
 	 * @see com.cards.shuffler.resource.CardShufflerServiceI#getAllDecks()
 	 */
 	@Override
-	public List<Deck> getAllDecks() {
-		List<Deck> deckList = CacheManager.getInstance().lookupCache();
+	public List<GenericDeckI> getAllDecks() {
+		List<GenericDeckI> deckList = CacheManager.getInstance().lookupCache();
 		System.out.println("Total decks currently :" + deckList.size());
 		return deckList;
 	}

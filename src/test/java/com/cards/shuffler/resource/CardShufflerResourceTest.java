@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.cards.shuffler.card.Deck;
+import com.cards.shuffler.card.GenericDeckI;
 
 /**
  * Implements basic test cases for the application
@@ -21,13 +21,13 @@ public class CardShufflerResourceTest {
 	/**
 	 * Prints all cards
 	 * 
-	 * @param deck
-	 *            Deck which needs to be printed
+	 * @param shuffler
+	 *            Shuffler which needs to be printed
 	 */
-	public void printAllCards(Deck deck) {
+	public void printAllCards(GenericDeckI shuffler) {
 		System.out.println("Contents of deck");
-		for (int i = 0; i < deck.getDeck().length; i++) {
-			System.out.println(deck.getDeck().toString());
+		for (int i = 0; i < shuffler.getDeck().length; i++) {
+			System.out.println(shuffler.getDeck().toString());
 		}
 	}
 
@@ -40,7 +40,7 @@ public class CardShufflerResourceTest {
 	public void testGetDeck() throws Exception {
 		CardShufflerResponse cardShufflerResponse = new CardShufflerResponse();
 		cardShufflerResponse = cardShufflerResource.getDeck("test1");
-		Deck deck = cardShufflerResponse.getDeck();
+		GenericDeckI deck = cardShufflerResponse.getDeck();
 		printAllCards(deck);
 		Assert.assertEquals(0, cardShufflerResponse.getResponseCode());
 

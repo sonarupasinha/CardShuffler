@@ -5,8 +5,7 @@ import java.util.List;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-import com.cards.shuffler.card.Deck;
-
+import com.cards.shuffler.card.GenericDeckI;
 
 /**
  * 
@@ -35,14 +34,14 @@ public class CardShufflerResponse {
 	 */
 	@JsonProperty
 	@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-	private Deck deck;
+	private GenericDeckI deck;
 
 	/**
 	 * 
 	 */
 	@JsonProperty
 	@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-	private List<Deck> decks;
+	private List<GenericDeckI> decks;
 
 	/**
 	 * 
@@ -80,7 +79,7 @@ public class CardShufflerResponse {
 	 * 
 	 * @return
 	 */
-	public Deck getDeck() {
+	public GenericDeckI getDeck() {
 		return deck;
 	}
 
@@ -88,7 +87,7 @@ public class CardShufflerResponse {
 	 * 
 	 * @param deck
 	 */
-	public void setDeck(Deck deck) {
+	public void setDeck(GenericDeckI deck) {
 		this.deck = deck;
 	}
 
@@ -96,15 +95,15 @@ public class CardShufflerResponse {
 	 * 
 	 * @return
 	 */
-	public List<Deck> getDecks() {
+	public List<GenericDeckI> getDecks() {
 		return decks;
 	}
 
 	/**
 	 * 
-	 * @param decks
+	 * @param shufflers
 	 */
-	public void setDecks(List<Deck> decks) {
+	public void setDecks(List<GenericDeckI> decks) {
 		this.decks = decks;
 	}
 }
