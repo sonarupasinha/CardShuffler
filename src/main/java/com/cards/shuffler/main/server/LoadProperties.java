@@ -72,34 +72,4 @@ public enum LoadProperties {
 		}
 		return prop;
 	}
-
-	/**
-	 * Loads the error code properties file
-	 * 
-	 * @return The error code properties file.
-	 */
-	public Properties loadErrCodesFile() {
-
-		Properties prop = new Properties();
-		InputStream input = null;
-
-		try {
-
-			input = LoadProperties.class.getClassLoader().getResourceAsStream("error.codes");
-			// load a properties file
-			prop.load(input);
-		} catch (IOException ex) {
-			ex.printStackTrace();
-			throw new RuntimeException(ex);
-		} finally {
-			if (input != null) {
-				try {
-					input.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return prop;
-	}
 }

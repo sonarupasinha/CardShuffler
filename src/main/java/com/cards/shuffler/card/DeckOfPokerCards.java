@@ -1,9 +1,9 @@
 package com.cards.shuffler.card;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import com.cards.shuffler.enums.EnumValues.FaceValue;
 import com.cards.shuffler.enums.EnumValues.Suit;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * Handles deck of poker cards
